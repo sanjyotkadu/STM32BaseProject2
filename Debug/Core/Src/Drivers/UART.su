@@ -1,0 +1,2 @@
+../Core/Src/Drivers/UART.c:8:6:UART_Init	4	static
+../Core/Src/Drivers/UART.c:13:6:UART_Send	16	static

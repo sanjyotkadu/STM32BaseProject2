@@ -1,0 +1,2 @@
+../Core/Src/Drivers/ADC.c:8:6:ADC_Init	1
+../Core/Src/Drivers/ADC.c:14:10:ADC_GetValue	4

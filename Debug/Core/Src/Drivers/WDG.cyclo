@@ -1,0 +1,2 @@
+../Core/Src/Drivers/WDG.c:7:6:WDG_Init	1
+../Core/Src/Drivers/WDG.c:12:6:WDG_Refresh	1
