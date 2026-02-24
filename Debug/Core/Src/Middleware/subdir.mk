@@ -5,15 +5,12 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
-../Core/Src/Middleware/DCMotCntrMod.c \
 ../Core/Src/Middleware/JoyMod.c 
 
 OBJS += \
-./Core/Src/Middleware/DCMotCntrMod.o \
 ./Core/Src/Middleware/JoyMod.o 
 
 C_DEPS += \
-./Core/Src/Middleware/DCMotCntrMod.d \
 ./Core/Src/Middleware/JoyMod.d 
 
 
@@ -24,7 +21,7 @@ Core/Src/Middleware/%.o Core/Src/Middleware/%.su Core/Src/Middleware/%.cyclo: ..
 clean: clean-Core-2f-Src-2f-Middleware
 
 clean-Core-2f-Src-2f-Middleware:
-	-$(RM) ./Core/Src/Middleware/DCMotCntrMod.cyclo ./Core/Src/Middleware/DCMotCntrMod.d ./Core/Src/Middleware/DCMotCntrMod.o ./Core/Src/Middleware/DCMotCntrMod.su ./Core/Src/Middleware/JoyMod.cyclo ./Core/Src/Middleware/JoyMod.d ./Core/Src/Middleware/JoyMod.o ./Core/Src/Middleware/JoyMod.su
+	-$(RM) ./Core/Src/Middleware/JoyMod.cyclo ./Core/Src/Middleware/JoyMod.d ./Core/Src/Middleware/JoyMod.o ./Core/Src/Middleware/JoyMod.su
 
 .PHONY: clean-Core-2f-Src-2f-Middleware
 

@@ -1,2 +1,1 @@
-../Core/Src/Middleware/JoyMod.c:7:16:Joy_GetScaledValue	16	static
-../Core/Src/Middleware/JoyMod.c:20:16:Joy_Scale	24	static
+../Core/Src/Middleware/JoyMod.c:5:10:getJoyInfoFromADC	32	static

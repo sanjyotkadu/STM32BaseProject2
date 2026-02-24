@@ -17,7 +17,6 @@ RM := rm -rf
 -include Core/Startup/subdir.mk
 -include Core/Src/Middleware/subdir.mk
 -include Core/Src/Drivers/subdir.mk
--include Core/Src/App/subdir.mk
 -include Core/Src/subdir.mk
 -include objects.mk
 
@@ -41,34 +40,34 @@ $(wildcard ../makefile.init) \
 $(wildcard ../makefile.targets) \
 
 
-BUILD_ARTIFACT_NAME := P1_Rover
+BUILD_ARTIFACT_NAME := Rover_FW
 BUILD_ARTIFACT_EXTENSION := elf
 BUILD_ARTIFACT_PREFIX :=
 BUILD_ARTIFACT := $(BUILD_ARTIFACT_PREFIX)$(BUILD_ARTIFACT_NAME)$(if $(BUILD_ARTIFACT_EXTENSION),.$(BUILD_ARTIFACT_EXTENSION),)
 
 # Add inputs and outputs from these tool invocations to the build variables 
 EXECUTABLES += \
-P1_Rover.elf \
+Rover_FW.elf \
 
 MAP_FILES += \
-P1_Rover.map \
+Rover_FW.map \
 
 SIZE_OUTPUT += \
 default.size.stdout \
 
 OBJDUMP_LIST += \
-P1_Rover.list \
+Rover_FW.list \
 
 
 # All Target
 all: main-build
 
 # Main-build Target
-main-build: P1_Rover.elf secondary-outputs
+main-build: Rover_FW.elf secondary-outputs
 
 # Tool invocations
-P1_Rover.elf P1_Rover.map: $(OBJS) $(USER_OBJS) C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\P1_Rover\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "P1_Rover.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\P1_Rover\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="P1_Rover.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Rover_FW.elf Rover_FW.map: $(OBJS) $(USER_OBJS) C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\Rover_FW\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Rover_FW.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\Rover_FW\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Rover_FW.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 
@@ -77,14 +76,14 @@ default.size.stdout: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
 	@echo 'Finished building: $@'
 	@echo ' '
 
-P1_Rover.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "P1_Rover.list"
+Rover_FW.list: $(EXECUTABLES) makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-objdump -h -S $(EXECUTABLES) > "Rover_FW.list"
 	@echo 'Finished building: $@'
 	@echo ' '
 
 # Other Targets
 clean:
-	-$(RM) P1_Rover.elf P1_Rover.list P1_Rover.map default.size.stdout
+	-$(RM) Rover_FW.elf Rover_FW.list Rover_FW.map default.size.stdout
 	-@echo ' '
 
 secondary-outputs: $(SIZE_OUTPUT) $(OBJDUMP_LIST)

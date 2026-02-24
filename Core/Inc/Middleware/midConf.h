@@ -11,14 +11,26 @@
 #include <stdint.h>
 
 /* ================= JOYSTICK CONFIG ================= */
-#define JOY_ADC_MIN            (uint16_t)0U
-#define JOY_ADC_MAX            (uint16_t)4095U
-#define JOY_ADC_CENTER         (uint16_t)2048U
-#define JOY_DEAD_ZONE          (uint16_t)50U
+/* ADC ranges*/
+//#define CF_ADC_POSITIVE_RANGE_MIN     10U
+//#define CF_ADC_POSITIVE_RANGE_MAX     2030U
 
-#define JOY_OUTPUT_MAX         (int16_t)100
+#define CF_ADC_POSITIVE_RANGE_MIN     2061U
+#define CF_ADC_POSITIVE_RANGE_MAX     4000U
 
-/* ================= MOTOR CONFIG ==================== */
-#define MOTOR_PWM_MAX          (uint16_t)1000U
+#define CF_ADC_NEUTRAL_RANGE_MIN      2031U
+#define CF_ADC_NEUTRAL_RANGE_MAX      2060U
+
+//#define CF_ADC_NEGATIVE_RANGE_MIN     2061U
+//#define CF_ADC_NEGATIVE_RANGE_MAX     4000U
+
+#define CF_ADC_NEGATIVE_RANGE_MIN     10U
+#define CF_ADC_NEGATIVE_RANGE_MAX     2030U
+
+#define CF_MIN_ADC_VALUE              0U
+#define CF_MAX_ADC_VALUE              4095U
+
+#define CF_MIN_JOY_VALUE              0U
+#define CF_MAX_JOY_VALUE              100U
 
 #endif /* INC_MIDDLEWARE_MIDCONF_H_ */

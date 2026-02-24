@@ -22,10 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "App/appTask.h"
-#include "App/commTask.h"
-#include "App/watchdogTask.h"
-#include "App/appConf.h"
+#include "Middleware/JoyMod.h"
+
+#include "Drivers/ADC.h"
+#include "Drivers/UART.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,18 +60,16 @@ const osThreadAttr_t defaultTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* USER CODE BEGIN PV */
-osThreadId_t appTaskHandle;
-osThreadId_t commTaskHandle;
-osThreadId_t watchdogTaskHandle;
+
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
 void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_ADC1_Init(void);
-static void MX_IWDG_Init(void);
 static void MX_TIM1_Init(void);
 static void MX_USART2_UART_Init(void);
+static void MX_IWDG_Init(void);
 void StartDefaultTask(void *argument);
 
 /* USER CODE BEGIN PFP */
@@ -80,27 +78,6 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
-/* USER CODE BEGIN RTOS_THREADS_ATTRIBUTES */
-
-const osThreadAttr_t appTask_attributes = {
-  .name = "AppTask",
-  .priority = (osPriority_t) osPriorityNormal,
-  .stack_size = 512 * 4
-};
-
-const osThreadAttr_t commTask_attributes = {
-  .name = "CommTask",
-  .priority = (osPriority_t) osPriorityLow,
-  .stack_size = 512 * 4
-};
-
-const osThreadAttr_t watchdogTask_attributes = {
-  .name = "WatchdogTask",
-  .priority = (osPriority_t) osPriorityHigh,
-  .stack_size = 256 * 4
-};
-
-/* USER CODE END RTOS_THREADS_ATTRIBUTES */
 
 /* USER CODE END 0 */
 
@@ -135,16 +112,21 @@ int main(void)
   MX_GPIO_Init();
   MX_ADC1_Init();
   MX_TIM1_Init();
-  MX_IWDG_Init();   // ✅ watchdog starts here
   MX_USART2_UART_Init();
+  //MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  PWM_Init();
-  ADC_Init();     // if you have it
+  joyStickInfo_t joyY;
+  joyStickInfo_t joyX;
+
+  uint16_t adcY;
+  uint16_t adcX;
+
+  char buffer[120];
 
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  osKernelInitialize();
+  //osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -164,11 +146,10 @@ int main(void)
 
   /* Create the thread(s) */
   /* creation of defaultTask */
+  //defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
-  appTaskHandle = osThreadNew(AppTask, NULL, &appTask_attributes);
-  commTaskHandle = osThreadNew(CommTask, NULL, &commTask_attributes);
-  watchdogTaskHandle = osThreadNew(WatchdogTask, NULL, &watchdogTask_attributes);
+  /* add threads, ... */
   /* USER CODE END RTOS_THREADS */
 
   /* USER CODE BEGIN RTOS_EVENTS */
@@ -176,7 +157,7 @@ int main(void)
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
-  osKernelStart();
+  //osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -187,6 +168,29 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
+    /* Read Joystick 1 (Forward/Backward) */
+      adcY = ADC_GetValue(ADC_CHANNEL_0);
+
+      /* Read Joystick 2 (Left/Right) */
+      adcX = ADC_GetValue(ADC_CHANNEL_1);
+
+      getJoyInfoFromADC(12U, adcY, &joyY);
+      getJoyInfoFromADC(12U, adcX, &joyX);
+
+      sprintf(buffer,
+              "Y: ADC:%4u Dir:%u Val:%3u | "
+              "X: ADC:%4u Dir:%u Val:%3u\r\n",
+              adcY,
+              joyY.joystickDir,
+              joyY.JoystickVal,
+              adcX,
+              joyX.joystickDir,
+              joyX.JoystickVal);
+
+      UART_Send(buffer,strlen(buffer));
+
+      HAL_Delay(200);
+
   }
   /* USER CODE END 3 */
 }
@@ -351,7 +355,7 @@ static void MX_TIM1_Init(void)
   htim1.Init.Period = 999;
   htim1.Init.ClockDivision = TIM_CLOCKDIVISION_DIV1;
   htim1.Init.RepetitionCounter = 0;
-  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_ENABLE;
+  htim1.Init.AutoReloadPreload = TIM_AUTORELOAD_PRELOAD_DISABLE;
   if (HAL_TIM_PWM_Init(&htim1) != HAL_OK)
   {
     Error_Handler();

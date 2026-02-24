@@ -1,3 +1,0 @@
-../Core/Src/App/appTask.c:10:6:AppTask	24	static
-../Core/Src/App/appTask.c:24:6:AppTask_Alive	4	static
-../Core/Src/App/appTask.c:29:9:AppTask_IsAlive	4	static
