@@ -7,17 +7,13 @@ extern TIM_HandleTypeDef htim1;
 
 void PWM_Init(void)
 {
-    (void)HAL_TIM_PWM_Start(&htim1, PWM_MOTOR_CHANNEL);
+    (void)HAL_TIM_PWM_Start(&htim1, LEFT_MOTOR_PWM_CHANNEL);
+    (void)HAL_TIM_PWM_Start(&htim1, RIGHT_MOTOR_PWM_CHANNEL);
 }
 
-void PWM_SetDuty(uint16_t duty)
+void Pwm_SetDuty(TIM_HandleTypeDef *htim,
+                 uint32_t channel,
+                 uint16_t duty)
 {
-    uint16_t safeDuty = duty;
-
-    if (safeDuty > PWM_MAX_DUTY)
-    {
-        safeDuty = PWM_MAX_DUTY;
-    }
-
-    __HAL_TIM_SET_COMPARE(&htim1, PWM_MOTOR_CHANNEL, safeDuty);
+    __HAL_TIM_SET_COMPARE(htim, channel, duty);
 }

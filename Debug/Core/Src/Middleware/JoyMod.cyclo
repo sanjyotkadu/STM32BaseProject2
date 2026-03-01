@@ -1,1 +1,2 @@
-../Core/Src/Middleware/JoyMod.c:5:10:getJoyInfoFromADC	9
+../Core/Src/Middleware/JoyMod.c:7:10:getJoyInfoFromADC	8
+../Core/Src/Middleware/JoyMod.c:82:6:Joystick_Get	1

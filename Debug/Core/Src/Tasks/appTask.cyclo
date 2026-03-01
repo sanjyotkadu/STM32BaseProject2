@@ -1,0 +1,3 @@
+../Core/Src/Tasks/appTask.c:10:6:AppTask	1
+../Core/Src/Tasks/appTask.c:29:6:AppTask_Alive	1
+../Core/Src/Tasks/appTask.c:34:9:AppTask_IsAlive	1

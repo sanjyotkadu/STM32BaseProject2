@@ -1,7 +1,6 @@
-Core/Src/Drivers/RC_Driver.o: ../Core/Src/Drivers/RC_Driver.c \
- ../Core/Inc/Drivers/RC_Driver.h ../Core/Inc/Drivers/ADC.h \
- ../Core/Inc/Drivers/drivConf.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
+Core/Src/Middleware/DCMotCntrMod.o: ../Core/Src/Middleware/DCMotCntrMod.c \
+ ../Core/Inc/Middleware/DCMotCntrMod.h ../Core/Inc/Drivers/PWM.h \
+ ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_def.h \
@@ -32,10 +31,12 @@ Core/Src/Drivers/RC_Driver.o: ../Core/Src/Drivers/RC_Driver.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
-../Core/Inc/Drivers/RC_Driver.h:
-../Core/Inc/Drivers/ADC.h:
-../Core/Inc/Drivers/drivConf.h:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
+ ../Core/Inc/Drivers/drivConf.h ../Core/Inc/Middleware/midConf.h \
+ ../Core/Inc/Drivers/Dig.h
+../Core/Inc/Middleware/DCMotCntrMod.h:
+../Core/Inc/Drivers/PWM.h:
+../Core/Inc/main.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -68,3 +69,6 @@ Core/Src/Drivers/RC_Driver.o: ../Core/Src/Drivers/RC_Driver.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
+../Core/Inc/Drivers/drivConf.h:
+../Core/Inc/Middleware/midConf.h:
+../Core/Inc/Drivers/Dig.h:

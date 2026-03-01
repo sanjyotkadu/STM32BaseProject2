@@ -59,6 +59,22 @@ void Error_Handler(void);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/
+#define JOY_Y_ADC_Pin GPIO_PIN_0
+#define JOY_Y_ADC_GPIO_Port GPIOA
+#define JOY_X_ADC_Pin GPIO_PIN_1
+#define JOY_X_ADC_GPIO_Port GPIOA
+#define LEFT_MOTOR_IN1_Pin GPIO_PIN_4
+#define LEFT_MOTOR_IN1_GPIO_Port GPIOA
+#define LEFT_MOTOR_IN2_Pin GPIO_PIN_5
+#define LEFT_MOTOR_IN2_GPIO_Port GPIOA
+#define RIGHT_MOTOR_IN1_Pin GPIO_PIN_6
+#define RIGHT_MOTOR_IN1_GPIO_Port GPIOA
+#define RIGHT_MOTOR_IN2_Pin GPIO_PIN_7
+#define RIGHT_MOTOR_IN2_GPIO_Port GPIOA
+#define LEFT_MOTOR_PWM_Pin GPIO_PIN_8
+#define LEFT_MOTOR_PWM_GPIO_Port GPIOA
+#define RIGHT_MOTOR_PWM_Pin GPIO_PIN_9
+#define RIGHT_MOTOR_PWM_GPIO_Port GPIOA
 
 /* USER CODE BEGIN Private defines */
 

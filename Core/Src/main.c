@@ -22,10 +22,10 @@
 
 /* Private includes ----------------------------------------------------------*/
 /* USER CODE BEGIN Includes */
-#include "Middleware/JoyMod.h"
-
-#include "Drivers/ADC.h"
-#include "Drivers/UART.h"
+#include "Tasks/appTask.h"
+#include "Tasks/commTask.h"
+#include "Tasks/watchdogTask.h"
+#include "Tasks/appConf.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/
@@ -60,7 +60,9 @@ const osThreadAttr_t defaultTask_attributes = {
   .priority = (osPriority_t) osPriorityNormal,
 };
 /* USER CODE BEGIN PV */
-
+osThreadId_t appTaskHandle;
+osThreadId_t commTaskHandle;
+osThreadId_t watchdogTaskHandle;
 /* USER CODE END PV */
 
 /* Private function prototypes -----------------------------------------------*/
@@ -78,7 +80,27 @@ void StartDefaultTask(void *argument);
 
 /* Private user code ---------------------------------------------------------*/
 /* USER CODE BEGIN 0 */
+/* USER CODE BEGIN RTOS_THREADS_ATTRIBUTES */
 
+const osThreadAttr_t appTask_attributes = {
+  .name = "AppTask",
+  .priority = (osPriority_t) osPriorityNormal,
+  .stack_size = 512 * 4
+};
+
+const osThreadAttr_t commTask_attributes = {
+  .name = "CommTask",
+  .priority = (osPriority_t) osPriorityLow,
+  .stack_size = 512 * 4
+};
+
+const osThreadAttr_t watchdogTask_attributes = {
+  .name = "WatchdogTask",
+  .priority = (osPriority_t) osPriorityHigh,
+  .stack_size = 256 * 4
+};
+
+/* USER CODE END RTOS_THREADS_ATTRIBUTES */
 /* USER CODE END 0 */
 
 /**
@@ -113,20 +135,15 @@ int main(void)
   MX_ADC1_Init();
   MX_TIM1_Init();
   MX_USART2_UART_Init();
-  //MX_IWDG_Init();
+  MX_IWDG_Init();
   /* USER CODE BEGIN 2 */
-  joyStickInfo_t joyY;
-  joyStickInfo_t joyX;
-
-  uint16_t adcY;
-  uint16_t adcX;
-
-  char buffer[120];
+  PWM_Init();
+  ADC_Init();
 
   /* USER CODE END 2 */
 
   /* Init scheduler */
-  //osKernelInitialize();
+  osKernelInitialize();
 
   /* USER CODE BEGIN RTOS_MUTEX */
   /* add mutexes, ... */
@@ -146,7 +163,9 @@ int main(void)
 
   /* Create the thread(s) */
   /* creation of defaultTask */
-  //defaultTaskHandle = osThreadNew(StartDefaultTask, NULL, &defaultTask_attributes);
+  appTaskHandle = osThreadNew(AppTask, NULL, &appTask_attributes);
+  commTaskHandle = osThreadNew(CommTask, NULL, &commTask_attributes);
+  watchdogTaskHandle = osThreadNew(WatchdogTask, NULL, &watchdogTask_attributes);
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* add threads, ... */
@@ -157,7 +176,7 @@ int main(void)
   /* USER CODE END RTOS_EVENTS */
 
   /* Start scheduler */
-  //osKernelStart();
+  osKernelStart();
 
   /* We should never get here as control is now taken by the scheduler */
 
@@ -168,29 +187,6 @@ int main(void)
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
-    /* Read Joystick 1 (Forward/Backward) */
-      adcY = ADC_GetValue(ADC_CHANNEL_0);
-
-      /* Read Joystick 2 (Left/Right) */
-      adcX = ADC_GetValue(ADC_CHANNEL_1);
-
-      getJoyInfoFromADC(12U, adcY, &joyY);
-      getJoyInfoFromADC(12U, adcX, &joyX);
-
-      sprintf(buffer,
-              "Y: ADC:%4u Dir:%u Val:%3u | "
-              "X: ADC:%4u Dir:%u Val:%3u\r\n",
-              adcY,
-              joyY.joystickDir,
-              joyY.JoystickVal,
-              adcX,
-              joyX.joystickDir,
-              joyX.JoystickVal);
-
-      UART_Send(buffer,strlen(buffer));
-
-      HAL_Delay(200);
-
   }
   /* USER CODE END 3 */
 }
@@ -377,6 +373,10 @@ static void MX_TIM1_Init(void)
   {
     Error_Handler();
   }
+  if (HAL_TIM_PWM_ConfigChannel(&htim1, &sConfigOC, TIM_CHANNEL_2) != HAL_OK)
+  {
+    Error_Handler();
+  }
   sBreakDeadTimeConfig.OffStateRunMode = TIM_OSSR_DISABLE;
   sBreakDeadTimeConfig.OffStateIDLEMode = TIM_OSSI_DISABLE;
   sBreakDeadTimeConfig.LockLevel = TIM_LOCKLEVEL_OFF;
@@ -443,10 +443,10 @@ static void MX_GPIO_Init(void)
   __HAL_RCC_GPIOA_CLK_ENABLE();
 
   /*Configure GPIO pin Output Level */
-  HAL_GPIO_WritePin(GPIOA, GPIO_PIN_5|GPIO_PIN_6, GPIO_PIN_RESET);
+  HAL_GPIO_WritePin(GPIOA, LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin, GPIO_PIN_RESET);
 
-  /*Configure GPIO pins : PA5 PA6 */
-  GPIO_InitStruct.Pin = GPIO_PIN_5|GPIO_PIN_6;
+  /*Configure GPIO pins : LEFT_MOTOR_IN1_Pin LEFT_MOTOR_IN2_Pin RIGHT_MOTOR_IN1_Pin RIGHT_MOTOR_IN2_Pin */
+  GPIO_InitStruct.Pin = LEFT_MOTOR_IN1_Pin|LEFT_MOTOR_IN2_Pin|RIGHT_MOTOR_IN1_Pin|RIGHT_MOTOR_IN2_Pin;
   GPIO_InitStruct.Mode = GPIO_MODE_OUTPUT_PP;
   GPIO_InitStruct.Pull = GPIO_NOPULL;
   GPIO_InitStruct.Speed = GPIO_SPEED_FREQ_LOW;

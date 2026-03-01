@@ -1,5 +1,7 @@
 #include "Middleware/JoyMod.h"
 #include "Middleware/midConf.h"
+#include "Drivers/drivConf.h"
+#include "Drivers/ADC.h"
 #include <stddef.h>
 
 retVal_t getJoyInfoFromADC(uint8_t adcResolution,
@@ -59,7 +61,7 @@ retVal_t getJoyInfoFromADC(uint8_t adcResolution,
     {
         pJoyInfo->joystickDir = JOY_DIR_NEUTRAL;
         pJoyInfo->JoystickVal = 0U;
-        return 0U;   // <-- IMPORTANT
+        return 0U;
     }
 
     /* Out-of-range safety */
@@ -67,17 +69,27 @@ retVal_t getJoyInfoFromADC(uint8_t adcResolution,
     {
         pJoyInfo->joystickDir = JOY_DIR_NEUTRAL;
         pJoyInfo->JoystickVal = 0U;
-        return 0U;   // <-- IMPORTANT
+        return 0U;
     }
 
-
-//    /* Scaling */
-//    scaledVal = ((uint32_t)(adcValue - zoneMin) *
-//                 CF_MAX_JOY_VALUE +
-//                 ((zoneMax - zoneMin) / 2U))
-//                / (zoneMax - zoneMin);
 
     pJoyInfo->JoystickVal = (uint16_t)scaledVal;
 
     return 0U;
+}
+
+
+void Joystick_Get(joyStickInfo_t *joyForward,
+                  joyStickInfo_t *joyTurn)
+{
+    uint16_t adcForward;
+    uint16_t adcTurn;
+
+    /* Read ADC internally */
+    adcForward = ADC_GetValue(JOY_Y_ADC_CHANNEL);
+    adcTurn    = ADC_GetValue(JOY_X_ADC_CHANNEL);
+
+    /* Convert to scaled joystick values */
+    getJoyInfoFromADC(12U, adcForward, joyForward);
+    getJoyInfoFromADC(12U, adcTurn, joyTurn);
 }

@@ -1,0 +1,3 @@
+../Core/Src/Middleware/DCMotCntrMod.c:7:13:Motor_Run	32	static
+../Core/Src/Middleware/DCMotCntrMod.c:39:6:DCMotor_Left_Run	32	static
+../Core/Src/Middleware/DCMotCntrMod.c:50:6:DCMotor_Right_Run	32	static

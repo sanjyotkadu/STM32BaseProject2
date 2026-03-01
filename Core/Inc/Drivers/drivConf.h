@@ -10,19 +10,36 @@
 
 #include <stdint.h>
 #include "stm32f4xx_hal.h"
+#include "main.h"
+
+extern TIM_HandleTypeDef htim1;
 
 /* ================= ADC CONFIG ================= */
-#define ADC_JOY_Y_CHANNEL        (uint32_t)ADC_CHANNEL_0
+#define JOY_Y_ADC_CHANNEL        ADC_CHANNEL_0   // PA0
+#define JOY_X_ADC_CHANNEL        ADC_CHANNEL_1   // PA1
 
-/* ================= PWM CONFIG ================= */
-#define PWM_MAX_DUTY             (uint16_t)1000U
-#define PWM_MOTOR_CHANNEL        (uint32_t)TIM_CHANNEL_1
+/* ================= LEFT MOTOR ================= */
 
-/* ================= GPIO CONFIG ================= */
-#define MOTOR_DIR_PORT           GPIOA
-#define MOTOR_DIR_PIN_1          GPIO_PIN_5
-#define MOTOR_DIR_PIN_2          GPIO_PIN_6
+#define LEFT_MOTOR_PWM_TIMER        (&htim1)
+#define LEFT_MOTOR_PWM_CHANNEL      TIM_CHANNEL_1
 
+#define LEFT_MOTOR_IN1_PORT         GPIOA
+#define LEFT_MOTOR_IN1_PIN          GPIO_PIN_4
+
+#define LEFT_MOTOR_IN2_PORT         GPIOA
+#define LEFT_MOTOR_IN2_PIN          GPIO_PIN_5
+
+
+/* ================= RIGHT MOTOR ================= */
+
+#define RIGHT_MOTOR_PWM_TIMER       (&htim1)
+#define RIGHT_MOTOR_PWM_CHANNEL     TIM_CHANNEL_2
+
+#define RIGHT_MOTOR_IN1_PORT        GPIOA
+#define RIGHT_MOTOR_IN1_PIN         GPIO_PIN_6
+
+#define RIGHT_MOTOR_IN2_PORT        GPIOA
+#define RIGHT_MOTOR_IN2_PIN         GPIO_PIN_7
 /* ================= UART CONFIG ================= */
 #define DEBUG_UART_INSTANCE      USART2
 #define UART_TX_TIMEOUT_MS       (uint32_t)100U
