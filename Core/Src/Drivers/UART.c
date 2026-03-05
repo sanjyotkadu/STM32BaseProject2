@@ -2,6 +2,7 @@
 #include "Drivers/drivConf.h"
 #include "stm32f4xx_hal.h"
 
+
 /* UART handle from CubeMX */
 extern UART_HandleTypeDef huart2;
 

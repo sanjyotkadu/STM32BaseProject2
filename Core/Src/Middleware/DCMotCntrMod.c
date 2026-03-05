@@ -3,6 +3,9 @@
 #include "Drivers/drivConf.h"
 #include "Middleware/midConf.h"
 #include "Drivers/Dig.h"
+#include "Middleware/PWM_Algorithm.h"
+
+
 
 static void Motor_Run(GPIO_TypeDef *in1Port,
                       uint16_t in1Pin,
@@ -18,13 +21,15 @@ static void Motor_Run(GPIO_TypeDef *in1Port,
     {
         Dig_Write(in1Port, in1Pin, DIG_HIGH);
         Dig_Write(in2Port, in2Pin, DIG_LOW);
-        duty = (speed * MOTOR_PWM_MAX) / CF_MAX_JOY_VALUE;
+        //duty = (speed * MOTOR_PWM_MAX) / CF_MAX_JOY_VALUE;
+        duty = PWM_Parabola(speed);
     }
     else if (speed < 0)
     {
         Dig_Write(in1Port, in1Pin, DIG_LOW);
         Dig_Write(in2Port, in2Pin, DIG_HIGH);
-        duty = ((-speed) * MOTOR_PWM_MAX) / CF_MAX_JOY_VALUE;
+        //duty = ((-speed) * MOTOR_PWM_MAX) / CF_MAX_JOY_VALUE;
+        duty = PWM_Parabola(-speed);
     }
     else
     {

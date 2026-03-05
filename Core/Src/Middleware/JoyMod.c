@@ -4,6 +4,7 @@
 #include "Drivers/ADC.h"
 #include <stddef.h>
 
+
 retVal_t getJoyInfoFromADC(uint8_t adcResolution,
                            uint16_t adcValue,
                            joyStickInfo_t * pJoyInfo)

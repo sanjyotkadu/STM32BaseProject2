@@ -31,7 +31,9 @@
 #define CF_MAX_ADC_VALUE              4095U
 
 #define CF_MIN_JOY_VALUE              0U
-#define CF_MAX_JOY_VALUE              100U
+#define CF_MAX_JOY_VALUE              1000
+
+#define JOY_DEADBAND   5
 
 #define MOTOR_PWM_MAX        1000U
 

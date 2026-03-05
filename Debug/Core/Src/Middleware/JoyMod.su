@@ -1,2 +1,2 @@
-../Core/Src/Middleware/JoyMod.c:7:10:getJoyInfoFromADC	32	static
-../Core/Src/Middleware/JoyMod.c:82:6:Joystick_Get	24	static
+../Core/Src/Middleware/JoyMod.c:8:10:getJoyInfoFromADC	32	static
+../Core/Src/Middleware/JoyMod.c:83:6:Joystick_Get	24	static

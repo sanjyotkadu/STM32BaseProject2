@@ -39,6 +39,7 @@ uint16_t ADC_GetValue(uint32_t channel)
         }
     }
 
+
     (void)HAL_ADC_Stop(&hadc1);
 
     return adcValue;
