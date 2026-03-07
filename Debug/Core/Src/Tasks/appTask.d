@@ -1,6 +1,5 @@
 Core/Src/Tasks/appTask.o: ../Core/Src/Tasks/appTask.c \
- ../Core/Inc/Tasks/appTask.h ../Core/Inc/Middleware/JoyMod.h \
- ../Core/Inc/Middleware/DCMotCntrMod.h \
+ ../Core/Inc/Tasks/appTask.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h \
  ../Core/Inc/FreeRTOSConfig.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h \
@@ -10,10 +9,8 @@ Core/Src/Tasks/appTask.o: ../Core/Src/Tasks/appTask.c \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/mpu_wrappers.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h \
  ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h \
- ../Core/Inc/Tasks/appConf.h
+ ../Core/Inc/Tasks/appConf.h ../Core/Inc/App/Application/RoverApp.h
 ../Core/Inc/Tasks/appTask.h:
-../Core/Inc/Middleware/JoyMod.h:
-../Core/Inc/Middleware/DCMotCntrMod.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/FreeRTOS.h:
 ../Core/Inc/FreeRTOSConfig.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/projdefs.h:
@@ -24,3 +21,4 @@ Core/Src/Tasks/appTask.o: ../Core/Src/Tasks/appTask.c \
 ../Middlewares/Third_Party/FreeRTOS/Source/include/task.h:
 ../Middlewares/Third_Party/FreeRTOS/Source/include/list.h:
 ../Core/Inc/Tasks/appConf.h:
+../Core/Inc/App/Application/RoverApp.h:

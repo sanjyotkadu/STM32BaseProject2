@@ -1,3 +1,4 @@
+"./Core/Src/App/Application/RoverApp.o"
 "./Core/Src/App/Application/RoverControl.o"
 "./Core/Src/App/SystemControls/RoverDcMotorControl.o"
 "./Core/Src/Drivers/ADC.o"

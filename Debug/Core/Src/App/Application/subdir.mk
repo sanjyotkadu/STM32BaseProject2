@@ -5,12 +5,15 @@
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS += \
+../Core/Src/App/Application/RoverApp.c \
 ../Core/Src/App/Application/RoverControl.c 
 
 OBJS += \
+./Core/Src/App/Application/RoverApp.o \
 ./Core/Src/App/Application/RoverControl.o 
 
 C_DEPS += \
+./Core/Src/App/Application/RoverApp.d \
 ./Core/Src/App/Application/RoverControl.d 
 
 
@@ -21,7 +24,7 @@ Core/Src/App/Application/%.o Core/Src/App/Application/%.su Core/Src/App/Applicat
 clean: clean-Core-2f-Src-2f-App-2f-Application
 
 clean-Core-2f-Src-2f-App-2f-Application:
-	-$(RM) ./Core/Src/App/Application/RoverControl.cyclo ./Core/Src/App/Application/RoverControl.d ./Core/Src/App/Application/RoverControl.o ./Core/Src/App/Application/RoverControl.su
+	-$(RM) ./Core/Src/App/Application/RoverApp.cyclo ./Core/Src/App/Application/RoverApp.d ./Core/Src/App/Application/RoverApp.o ./Core/Src/App/Application/RoverApp.su ./Core/Src/App/Application/RoverControl.cyclo ./Core/Src/App/Application/RoverControl.d ./Core/Src/App/Application/RoverControl.o ./Core/Src/App/Application/RoverControl.su
 
 .PHONY: clean-Core-2f-Src-2f-App-2f-Application
 

@@ -1,9 +1,9 @@
 #include "Tasks/appTask.h"
-#include "Middleware/JoyMod.h"
-#include "Middleware/DCMotCntrMod.h"
 #include "FreeRTOS.h"
 #include "task.h"
 #include "Tasks/appConf.h"
+#include "App/Application/RoverApp.h"
+
 
 static volatile uint8_t appTaskAliveFlag = 0U;
 
@@ -11,15 +11,9 @@ void AppTask(void *pvParameters)
 {
     (void)pvParameters;
 
-    joyStickInfo_t joyForward;
-    joyStickInfo_t joyTurn;
-
     for (;;)
     {
-
-        Joystick_Get(&joyForward, &joyTurn);
-
-        Rover_Run(&joyForward, &joyTurn);
+    	Rover_App_Run();
 
         appTaskAliveFlag = 1U;
         vTaskDelay(pdMS_TO_TICKS(APP_TASK_PERIOD_MS));
