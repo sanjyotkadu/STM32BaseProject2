@@ -10,6 +10,8 @@
 
 #include <stdint.h>
 
+#include "Middleware/Input_Select.h"
+
 /* ================= TYPE DEFINITIONS ================= */
 
 typedef enum
@@ -33,8 +35,7 @@ retVal_t getJoyInfoFromADC(uint8_t adcResolution,
                            uint16_t adcValue,
                            joyStickInfo_t * pJoyInfo);
 
-void Joystick_Get(joyStickInfo_t *joyForward,
-                  joyStickInfo_t *joyTurn);
+void Joystick_Get(controlCmd_t *cmd);
 
 
 #endif /* INC_MIDDLEWARE_JOYMOD_H_ */

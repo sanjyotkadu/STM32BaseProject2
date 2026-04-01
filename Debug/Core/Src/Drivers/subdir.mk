@@ -8,6 +8,7 @@ C_SRCS += \
 ../Core/Src/Drivers/ADC.c \
 ../Core/Src/Drivers/Dig.c \
 ../Core/Src/Drivers/PWM.c \
+../Core/Src/Drivers/RC.c \
 ../Core/Src/Drivers/UART.c \
 ../Core/Src/Drivers/WDG.c 
 
@@ -15,6 +16,7 @@ OBJS += \
 ./Core/Src/Drivers/ADC.o \
 ./Core/Src/Drivers/Dig.o \
 ./Core/Src/Drivers/PWM.o \
+./Core/Src/Drivers/RC.o \
 ./Core/Src/Drivers/UART.o \
 ./Core/Src/Drivers/WDG.o 
 
@@ -22,6 +24,7 @@ C_DEPS += \
 ./Core/Src/Drivers/ADC.d \
 ./Core/Src/Drivers/Dig.d \
 ./Core/Src/Drivers/PWM.d \
+./Core/Src/Drivers/RC.d \
 ./Core/Src/Drivers/UART.d \
 ./Core/Src/Drivers/WDG.d 
 
@@ -33,7 +36,7 @@ Core/Src/Drivers/%.o Core/Src/Drivers/%.su Core/Src/Drivers/%.cyclo: ../Core/Src
 clean: clean-Core-2f-Src-2f-Drivers
 
 clean-Core-2f-Src-2f-Drivers:
-	-$(RM) ./Core/Src/Drivers/ADC.cyclo ./Core/Src/Drivers/ADC.d ./Core/Src/Drivers/ADC.o ./Core/Src/Drivers/ADC.su ./Core/Src/Drivers/Dig.cyclo ./Core/Src/Drivers/Dig.d ./Core/Src/Drivers/Dig.o ./Core/Src/Drivers/Dig.su ./Core/Src/Drivers/PWM.cyclo ./Core/Src/Drivers/PWM.d ./Core/Src/Drivers/PWM.o ./Core/Src/Drivers/PWM.su ./Core/Src/Drivers/UART.cyclo ./Core/Src/Drivers/UART.d ./Core/Src/Drivers/UART.o ./Core/Src/Drivers/UART.su ./Core/Src/Drivers/WDG.cyclo ./Core/Src/Drivers/WDG.d ./Core/Src/Drivers/WDG.o ./Core/Src/Drivers/WDG.su
+	-$(RM) ./Core/Src/Drivers/ADC.cyclo ./Core/Src/Drivers/ADC.d ./Core/Src/Drivers/ADC.o ./Core/Src/Drivers/ADC.su ./Core/Src/Drivers/Dig.cyclo ./Core/Src/Drivers/Dig.d ./Core/Src/Drivers/Dig.o ./Core/Src/Drivers/Dig.su ./Core/Src/Drivers/PWM.cyclo ./Core/Src/Drivers/PWM.d ./Core/Src/Drivers/PWM.o ./Core/Src/Drivers/PWM.su ./Core/Src/Drivers/RC.cyclo ./Core/Src/Drivers/RC.d ./Core/Src/Drivers/RC.o ./Core/Src/Drivers/RC.su ./Core/Src/Drivers/UART.cyclo ./Core/Src/Drivers/UART.d ./Core/Src/Drivers/UART.o ./Core/Src/Drivers/UART.su ./Core/Src/Drivers/WDG.cyclo ./Core/Src/Drivers/WDG.d ./Core/Src/Drivers/WDG.o ./Core/Src/Drivers/WDG.su
 
 .PHONY: clean-Core-2f-Src-2f-Drivers
 

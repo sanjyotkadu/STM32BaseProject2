@@ -1,2 +1,1 @@
-../Core/Src/App/Application/RoverControl.c:5:16:Joy_ToSignedSpeed	16	static
-../Core/Src/App/Application/RoverControl.c:21:6:Rover_Run	24	static
+../Core/Src/App/Application/RoverControl.c:5:6:Rover_Run	16	static

@@ -1,0 +1,2 @@
+../Core/Src/Middleware/RCMod.c:7:16:scaleRC	24	static
+../Core/Src/Middleware/RCMod.c:20:6:RC_Get	152	static

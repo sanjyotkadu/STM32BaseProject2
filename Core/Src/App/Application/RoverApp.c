@@ -1,14 +1,16 @@
 #include "App/Application/RoverApp.h"
 #include "Middleware/JoyMod.h"
 #include "Middleware/DCMotCntrMod.h"
+#include "Middleware/Input_Select.h"
+
+
 
 void Rover_App_Run(void)
 {
-    joyStickInfo_t joyForward;
-    joyStickInfo_t joyTurn;
+	controlCmd_t cmd;
 
-    Joystick_Get(&joyForward, &joyTurn);
+	Input_Get(&cmd);
 
-    Rover_Run(&joyForward, &joyTurn);
+    Rover_Run(&cmd);
 
 }

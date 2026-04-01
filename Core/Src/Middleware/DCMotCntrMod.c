@@ -6,7 +6,6 @@
 #include "Middleware/PWM_Algorithm.h"
 
 
-
 static void Motor_Run(GPIO_TypeDef *in1Port,
                       uint16_t in1Pin,
                       GPIO_TypeDef *in2Port,

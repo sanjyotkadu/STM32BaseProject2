@@ -1,0 +1,3 @@
+../Core/Src/Drivers/RC.c:15:6:RC_Init	1
+../Core/Src/Drivers/RC.c:23:6:HAL_TIM_IC_CaptureCallback	19
+../Core/Src/Drivers/RC.c:62:10:RC_GetPulse	1

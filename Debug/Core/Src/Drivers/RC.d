@@ -1,6 +1,4 @@
-Core/Src/Middleware/JoyMod.o: ../Core/Src/Middleware/JoyMod.c \
- ../Core/Inc/Middleware/JoyMod.h ../Core/Inc/Middleware/Input_Select.h \
- ../Core/Inc/Middleware/midConf.h ../Core/Inc/Drivers/drivConf.h \
+Core/Src/Drivers/RC.o: ../Core/Src/Drivers/RC.c ../Core/Inc/Drivers/RC.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h \
@@ -32,12 +30,8 @@ Core/Src/Middleware/JoyMod.o: ../Core/Src/Middleware/JoyMod.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_pwr_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
- ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
- ../Core/Inc/main.h ../Core/Inc/Drivers/ADC.h
-../Core/Inc/Middleware/JoyMod.h:
-../Core/Inc/Middleware/Input_Select.h:
-../Core/Inc/Middleware/midConf.h:
-../Core/Inc/Drivers/drivConf.h:
+ ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h
+../Core/Inc/Drivers/RC.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h:
 ../Core/Inc/stm32f4xx_hal_conf.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_rcc.h:
@@ -70,5 +64,3 @@ Core/Src/Middleware/JoyMod.o: ../Core/Src/Middleware/JoyMod.c \
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h:
 ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h:
-../Core/Inc/main.h:
-../Core/Inc/Drivers/ADC.h:

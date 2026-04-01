@@ -10,19 +10,19 @@
 
 #include <stdint.h>
 
+#define INPUT_JOYSTICK  0
+#define INPUT_RC        1
+
+#define INPUT_SOURCE    INPUT_RC   // change here only
+
 /* ================= JOYSTICK CONFIG ================= */
 /* ADC ranges*/
-//#define CF_ADC_POSITIVE_RANGE_MIN     10U
-//#define CF_ADC_POSITIVE_RANGE_MAX     2030U
 
 #define CF_ADC_POSITIVE_RANGE_MIN     2061U
 #define CF_ADC_POSITIVE_RANGE_MAX     4095U
 
 #define CF_ADC_NEUTRAL_RANGE_MIN      2031U
 #define CF_ADC_NEUTRAL_RANGE_MAX      2060U
-
-//#define CF_ADC_NEGATIVE_RANGE_MIN     2061U
-//#define CF_ADC_NEGATIVE_RANGE_MAX     4000U
 
 #define CF_ADC_NEGATIVE_RANGE_MIN     0U
 #define CF_ADC_NEGATIVE_RANGE_MAX     2030U
@@ -33,7 +33,15 @@
 #define CF_MIN_JOY_VALUE              0U
 #define CF_MAX_JOY_VALUE              1000
 
-#define JOY_DEADBAND   5
+#define JOY_DEADBAND   20
+
+/* ================= RC CONFIG ================= */
+
+#define RC_MIN 1000
+#define RC_MAX 2000
+#define RC_MID 1500
+
+/* ================= PWM CONFIG ================= */
 
 #define MOTOR_PWM_MAX        1000U
 

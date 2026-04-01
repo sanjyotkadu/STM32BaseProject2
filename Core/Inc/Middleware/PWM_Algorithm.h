@@ -10,7 +10,7 @@
 #include <stdint.h>
 
 
-#define CURVE_K          2.0f   // Change this to tune feel
+#define CURVE_K          1.8f   // Change this to tune feel
 
 uint16_t PWM_Parabola(uint16_t speed);
 

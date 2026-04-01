@@ -75,6 +75,10 @@ void Error_Handler(void);
 #define LEFT_MOTOR_PWM_GPIO_Port GPIOA
 #define RIGHT_MOTOR_PWM_Pin GPIO_PIN_9
 #define RIGHT_MOTOR_PWM_GPIO_Port GPIOA
+#define RC_CH1_Pin GPIO_PIN_15
+#define RC_CH1_GPIO_Port GPIOA
+#define RC_CH2_Pin GPIO_PIN_3
+#define RC_CH2_GPIO_Port GPIOB
 
 /* USER CODE BEGIN Private defines */
 

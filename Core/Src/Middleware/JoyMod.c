@@ -4,7 +4,6 @@
 #include "Drivers/ADC.h"
 #include <stddef.h>
 
-
 retVal_t getJoyInfoFromADC(uint8_t adcResolution,
                            uint16_t adcValue,
                            joyStickInfo_t * pJoyInfo)
@@ -74,15 +73,35 @@ retVal_t getJoyInfoFromADC(uint8_t adcResolution,
     }
 
 
+
+
     pJoyInfo->JoystickVal = (uint16_t)scaledVal;
 
     return 0U;
 }
 
-
-void Joystick_Get(joyStickInfo_t *joyForward,
-                  joyStickInfo_t *joyTurn)
+/* Convert joystick info to signed speed */
+static int16_t Joy_ToSignedSpeed(const joyStickInfo_t *pJoy)
 {
+    if (pJoy->joystickDir == JOY_DIR_POSITIVE)
+    {
+        return (int16_t)pJoy->JoystickVal;
+    }
+    else if (pJoy->joystickDir == JOY_DIR_NEGATIVE)
+    {
+        return -(int16_t)pJoy->JoystickVal;
+    }
+    else
+    {
+        return 0;
+    }
+}
+
+void Joystick_Get(controlCmd_t *cmd)
+{
+	joyStickInfo_t joyForward;
+	joyStickInfo_t joyTurn;
+
     uint16_t adcForward;
     uint16_t adcTurn;
 
@@ -91,6 +110,12 @@ void Joystick_Get(joyStickInfo_t *joyForward,
     adcTurn    = ADC_GetValue(JOY_X_ADC_CHANNEL);
 
     /* Convert to scaled joystick values */
-    getJoyInfoFromADC(12U, adcForward, joyForward);
-    getJoyInfoFromADC(12U, adcTurn, joyTurn);
+    getJoyInfoFromADC(12U, adcForward, &joyForward);
+    getJoyInfoFromADC(12U, adcTurn, &joyTurn);
+
+    /* Convert to signed */
+    cmd->forward = Joy_ToSignedSpeed(&joyForward);
+    cmd->turn    = Joy_ToSignedSpeed(&joyTurn);
+
 }
+
