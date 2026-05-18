@@ -26,6 +26,10 @@
 #include "Tasks/commTask.h"
 #include "Tasks/watchdogTask.h"
 #include "Tasks/appConf.h"
+
+#include "Drivers/PWM.h"
+#include "Drivers/ADC.h"
+#include "Drivers/RC.h"
 /* USER CODE END Includes */
 
 /* Private typedef -----------------------------------------------------------*/

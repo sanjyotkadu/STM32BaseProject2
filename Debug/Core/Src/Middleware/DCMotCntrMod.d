@@ -1,4 +1,5 @@
 Core/Src/Middleware/DCMotCntrMod.o: ../Core/Src/Middleware/DCMotCntrMod.c \
+ ../Core/Inc/Utilities/RampAlgorithm.h \
  ../Core/Inc/Middleware/DCMotCntrMod.h ../Core/Inc/Drivers/PWM.h \
  ../Core/Inc/main.h ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal.h \
  ../Core/Inc/stm32f4xx_hal_conf.h \
@@ -33,7 +34,8 @@ Core/Src/Middleware/DCMotCntrMod.o: ../Core/Src/Middleware/DCMotCntrMod.c \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_tim_ex.h \
  ../Drivers/STM32F4xx_HAL_Driver/Inc/stm32f4xx_hal_uart.h \
  ../Core/Inc/Drivers/drivConf.h ../Core/Inc/Middleware/midConf.h \
- ../Core/Inc/Drivers/Dig.h ../Core/Inc/Middleware/PWM_Algorithm.h
+ ../Core/Inc/Drivers/Dig.h
+../Core/Inc/Utilities/RampAlgorithm.h:
 ../Core/Inc/Middleware/DCMotCntrMod.h:
 ../Core/Inc/Drivers/PWM.h:
 ../Core/Inc/main.h:
@@ -72,4 +74,3 @@ Core/Src/Middleware/DCMotCntrMod.o: ../Core/Src/Middleware/DCMotCntrMod.c \
 ../Core/Inc/Drivers/drivConf.h:
 ../Core/Inc/Middleware/midConf.h:
 ../Core/Inc/Drivers/Dig.h:
-../Core/Inc/Middleware/PWM_Algorithm.h:

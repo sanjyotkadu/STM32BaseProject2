@@ -1,7 +1,7 @@
 
-#include "Middleware/PWM_Algorithm.h"
 #include "Middleware/midConf.h"
 #include <math.h>
+#include <Utilities/RampAlgorithm.h>
 
 uint16_t PWM_Parabola(uint16_t speed)
 {

@@ -5,8 +5,8 @@
  *      Author: zamee
  */
 
-#ifndef INC_MIDDLEWARE_PWM_ALGORITHM_H_
-#define INC_MIDDLEWARE_PWM_ALGORITHM_H_
+#ifndef INC_UTILITIES_RAMPALGORITHM_H_
+#define INC_UTILITIES_RAMPALGORITHM_H_
 #include <stdint.h>
 
 
@@ -14,4 +14,4 @@
 
 uint16_t PWM_Parabola(uint16_t speed);
 
-#endif /* INC_MIDDLEWARE_PWM_ALGORITHM_H_ */
+#endif /* INC_UTILITIES_RAMPALGORITHM_H_ */

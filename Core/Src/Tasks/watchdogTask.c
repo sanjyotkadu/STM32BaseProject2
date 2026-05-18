@@ -13,8 +13,7 @@ void WatchdogTask(void *pvParameters)
 
     for (;;)
     {
-        if ((AppTask_IsAlive() != 0U) &&
-            (CommTask_IsAlive() != 0U))
+        if ((AppTask_IsAlive() != 0U) && (CommTask_IsAlive() != 0U))
         {
             WDG_Refresh();
         }

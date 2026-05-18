@@ -1,4 +1,5 @@
 #include "Middleware/RCMod.h"
+#include "Drivers/RC.h"
 #include "Middleware/midConf.h"
 
 static int16_t scaleRC(uint16_t pulse)

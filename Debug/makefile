@@ -1,6 +1,6 @@
 ################################################################################
 # Automatically-generated file. Do not edit!
-# Toolchain: GNU Tools for STM32 (13.3.rel1)
+# Toolchain: GNU Tools for STM32 (14.3.rel1)
 ################################################################################
 
 -include ../makefile.init
@@ -15,6 +15,7 @@ RM := rm -rf
 -include Middlewares/Third_Party/FreeRTOS/Source/subdir.mk
 -include Drivers/STM32F4xx_HAL_Driver/Src/subdir.mk
 -include Core/Startup/subdir.mk
+-include Core/Src/Utilities/subdir.mk
 -include Core/Src/Tasks/subdir.mk
 -include Core/Src/Middleware/subdir.mk
 -include Core/Src/Drivers/subdir.mk
@@ -69,8 +70,8 @@ all: main-build
 main-build: Rover_FW.elf secondary-outputs
 
 # Tool invocations
-Rover_FW.elf Rover_FW.map: $(OBJS) $(USER_OBJS) C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\Rover_FW\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
-	arm-none-eabi-gcc -o "Rover_FW.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\zamee\Desktop\Zameer\Sanjyot\Workspace\Rover_FW\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Rover_FW.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
+Rover_FW.elf Rover_FW.map: $(OBJS) $(USER_OBJS) C:\Users\DELL\Desktop\Zameer\Projects\STM32BaseProject2-zameer_dev\STM32F446RETX_FLASH.ld makefile objects.list $(OPTIONAL_TOOL_DEPS)
+	arm-none-eabi-gcc -o "Rover_FW.elf" @"objects.list" $(USER_OBJS) $(LIBS) -mcpu=cortex-m4 -T"C:\Users\DELL\Desktop\Zameer\Projects\STM32BaseProject2-zameer_dev\STM32F446RETX_FLASH.ld" --specs=nosys.specs -Wl,-Map="Rover_FW.map" -Wl,--gc-sections -static --specs=nano.specs -mfpu=fpv4-sp-d16 -mfloat-abi=hard -mthumb -Wl,--start-group -lc -lm -Wl,--end-group
 	@echo 'Finished building target: $@'
 	@echo ' '
 

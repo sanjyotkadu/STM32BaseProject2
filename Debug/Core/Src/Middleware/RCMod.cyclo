@@ -1,2 +1,2 @@
-../Core/Src/Middleware/RCMod.c:7:16:scaleRC	3
-../Core/Src/Middleware/RCMod.c:20:6:RC_Get	1
+../Core/Src/Middleware/RCMod.c:5:16:scaleRC	3
+../Core/Src/Middleware/RCMod.c:18:6:RC_Get	1

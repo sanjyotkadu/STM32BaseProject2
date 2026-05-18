@@ -1,4 +1,5 @@
 #include "App/Application/RoverApp.h"
+#include "App/Application/RoverControl.h"
 #include "Middleware/JoyMod.h"
 #include "Middleware/DCMotCntrMod.h"
 #include "Middleware/Input_Select.h"

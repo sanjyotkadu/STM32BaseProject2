@@ -1,9 +1,9 @@
+#include <Utilities/RampAlgorithm.h>
 #include "Middleware/DCMotCntrMod.h"
 #include "Drivers/PWM.h"
 #include "Drivers/drivConf.h"
 #include "Middleware/midConf.h"
 #include "Drivers/Dig.h"
-#include "Middleware/PWM_Algorithm.h"
 
 
 static void Motor_Run(GPIO_TypeDef *in1Port,

@@ -11,6 +11,6 @@
 #include <stdint.h>
 
 void AppTask(void *pvParameters);
-void AppTask_Alive(void);
+uint8_t AppTask_IsAlive(void);
 
 #endif /* INC_APP_APPTASK_H_ */
